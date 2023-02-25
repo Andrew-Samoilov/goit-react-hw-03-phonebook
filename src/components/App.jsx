@@ -54,6 +54,26 @@ class App extends React.Component {
     }))
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('update contacts ');
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts })
+    }
+  }
+
   render() {
     const visibleContacts = this.getVisibleContacts();
 
