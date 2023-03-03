@@ -20,7 +20,9 @@
     border-radius: 0.25em;
     outline: none;
 }
-
+input:required:valid {
+    border-color: green;
+}
 .mainDiv{
     background-color:ghostwhite;
     border: 1px solid lightblue;
